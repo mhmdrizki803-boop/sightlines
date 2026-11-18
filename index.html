@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sightlines — point your camera, learn what you see</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Sightlines</h1>
+  <p>Point your camera at something and ask. A Pollinations vision model reads the frame and answers; the
+     answer can be read aloud in the same breath.</p>
+  <polli-connect app-key="pk_P2wJEmpQQ4OAIVt5" budget="5" expiry="7" models="text" hide-buy-pollen></polli-connect>
+</header>
+
+<main>
+  <section class="view">
+    <div class="camwrap">
+      <video id="cam" playsinline muted></video>
+      <canvas id="still" hidden></canvas>
+      <div class="badge" id="state">camera off</div>
+    </div>
+    <div class="row">
+      <button id="start" class="primary">Start the camera</button>
+      <button id="look" disabled>Look and explain</button>
+      <button id="stop" disabled>Stop</button>
+    </div>
+    <div class="row asks">
+      <span class="label">Ask</span>
+      <button class="chip" data-q="What is this? Answer in two short sentences.">what is this?</button>
+      <button class="chip" data-q="Why does this matter? Two short sentences.">why does it matter?</button>
+      <button class="chip" data-q="What should I notice here? Two short sentences.">what to notice?</button>
+      <label class="own"><input id="own" type="text" placeholder="or type your own question…"></label>
+    </div>
+    <p class="hint">The frame never leaves your browser except as the one still you send to the model, and
+       nothing is stored.</p>
+  </section>
+
+  <aside class="answer" id="answer" hidden>
+    <h2>What the model says</h2>
+    <div id="text"></div>
+    <div class="row">
+      <button id="speak">Read it aloud</button>
+      <a id="download" class="link" download="sightline.png" hidden>Save the frame</a>
+    </div>
+    <audio id="voice" controls hidden></audio>
+  </aside>
+
+  <section class="history" id="history" hidden>
+    <h2>This session</h2>
+    <ol id="list"></ol>
+  </section>
+</main>
+
+<footer><a href="https://pollinations.ai/?ref=sightlines">Pollinations</a> reads the picture and speaks the answer; you spend from your own pollen balance.</footer>
+
+<script src="https://gen.pollinations.ai/connect.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
